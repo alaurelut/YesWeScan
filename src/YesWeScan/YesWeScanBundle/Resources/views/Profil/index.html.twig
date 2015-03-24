@@ -1,0 +1,96 @@
+{% extends '::base.html.twig' %}
+{% block title %}{{ parent() }} - Profil{% endblock %}
+{% block body %}
+
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            
+
+            $( "#monProfil" ).click(function() {
+                event.preventDefault();
+                $( "#divProfil" ).show();
+                $( "#divQuestion" ).hide();
+            });
+            $("#mesQuestions").click(function(){
+                event.preventDefault();
+                $( "#divQuestion" ).show();
+                $( "#divProfil" ).hide();
+            });
+        });
+    </script>
+
+<div id="Pgrey">
+	<div id="pgProfil">
+		<div class="full2">
+			<div id="menuP">
+				<ul>
+					<a href="#" id ="monProfil">
+						<li class="FirstP active">Votre profil</li>
+					</a>
+					<a href="#" id ="mesQuestions">
+						<li class="SecondP">Mes questions</li>
+					</a>
+					<a href="{{ path('yes_we_scan_profil_sondage') }}">
+						<li class="ThirdP">Mes sondages</li>
+					</a>
+				</ul>
+			</div>
+			<div id="sectionProfil">
+				<div id="divProfil">
+					<h3>{{user.pseudo}},</h3>
+					<ul>
+						<li><strong>INSCRIPTION :</strong> {{ user.dateInscription|date('Y-m-d') }}</li>
+						<li><strong>DERNIER SONDAGE :</strong>
+						{% if sondages|length > 0 %}<a href="{{ path('yes_we_scan_sondage_print', {idUser: sondages[0].idUser , idSondage: sondages[0].id}) }}">{{sondages[0].question}}</a>
+						{% else %}
+						 PAS ENCORE DE SONDAGE
+						{% endif %}
+						
+						</li>
+
+
+
+						<li><strong>DERNIERES RÉPONSES :</strong> 25 MAI 2014</li>
+						<li><strong>DERNIER HOSPOT :</strong> 5, RUE DE LA GEEKERIE 75005 PARIS</li>
+					</ul>
+					<div id="record">
+						<div id="sondages">
+							<p><span>{{ sondages | length }}</span><br/>SONDAGE{% if sondages|length > 1 %}S{% endif %} </p>
+						</div>
+						<div id="reponses">
+							<p><span>10</span><br/>RÉPONSES</p>
+						</div>
+					</div>
+				</div>
+
+				<div id="divQuestion">
+					<h3>{{user.pseudo}},</h3>
+					<ul>
+
+
+
+						{% if sondages|length > 0 %}
+
+						{% for sondage in sondages %}
+			                <li><a href="{{ path('yes_we_scan_sondage_print', {idUser: sondage.idUser , idSondage: sondage.id}) }}"> {{loop.index}} - {{sondage.question}}</a></li>
+			            {% endfor %}
+
+						{% else %}
+							<li>PAS ENCORE DE SONDAGE</li>
+						{% endif %}
+						
+
+
+
+					</ul>
+
+				</div>
+
+			</div>
+
+			
+
+  		</div>
+	</div>
+</div>
+{% endblock %}

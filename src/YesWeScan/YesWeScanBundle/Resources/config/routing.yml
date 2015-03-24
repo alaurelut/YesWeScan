@@ -1,0 +1,61 @@
+# HOMEPAGE INDEX
+yes_we_scan_homepage:
+    pattern:  /
+    defaults: { _controller: YesWeScanBundle:Home:index }
+
+# PROFIL (DEFAULT => Profil)
+yes_we_scan_profil:
+    pattern:  /profil/{idUser}
+    defaults: { _controller: YesWeScanBundle:Profil:index }
+
+# PROFIL (Mes questions)
+yes_we_scan_profil_question:
+    pattern:  /profil/question
+    defaults: { _controller: YesWeScanBundle:Profil:question }
+
+# PROFIL (Mes sondages)
+yes_we_scan_profil_sondage:
+    pattern:  /profil/sondage
+    defaults: { _controller: YesWeScanBundle:Profil:sondage }
+
+# # SONDAGE (Répondre a un sondage)
+# yes_we_scan_sondage:
+#     pattern:  /sondage/{id}/{idReponse}/{valider}
+#     defaults: { _controller: YesWeScanBundle:Sondage:index }
+
+# SONDAGE (Statistique)
+yes_we_scan_sondage_statistique:
+    pattern:  /sondage/{id}/statistique
+    defaults: { _controller: YesWeScanBundle:Sondage:statistique }
+    requirements: 
+        id: \d+
+# SONDAGE (Création)
+yes_we_scan_sondage_creation:
+    pattern: /sondage/creation/1/{idUser}
+    defaults: { _controller: YesWeScanBundle:Sondage:creation, etape: 1 , idUser: 0}
+    requirements: 
+        idUser: \d+
+
+yes_we_scan_sondage_creation_etape_2:
+    pattern: /sondage/creation/2/{idUser}/{idSondage}
+    defaults: { _controller: YesWeScanBundle:Hotspot:creation, etape: 2 , idUser: 0}
+    requirements: 
+        idUser: \d+
+
+yes_we_scan_sondage_print:
+    pattern: /sondage/print/{idUser}/{idSondage}
+    defaults: { _controller: YesWeScanBundle:Sondage:print, idUser: 0}
+    requirements: 
+        idUser: \d+
+
+yes_we_scan_sondage_vote:
+    pattern: /sondage/vote/{idSondage}/{numReponse}
+    defaults: { _controller: YesWeScanBundle:Sondage:vote}
+    requirements: 
+        idUser: \d+
+
+
+# SONDAGE (Recherche)
+yes_we_scan_rechercher:
+    pattern:  /rechercher/{search}/{classement}
+    defaults: { _controller: YesWeScanBundle:Rechercher:rechercher }

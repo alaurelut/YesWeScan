@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}YesWeScan{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" href="{{ asset('bundles/yeswescan/css/styleTemplate1.css') }}" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+<header>
+
+</header>
+
+
+    <div id="mainTemplate">
+        <div id="logo"><img src="img/logoblanc.png" alt="YES WE SCAN" /></div>
+        <p id="context">
+            {% block context %}
+            {% endblock %}
+        </p>
+        <p id="question">
+            {% block question %}
+            {% endblock %}
+        </p>
+        {% block qrcode %}{% endblock %}
+        <div id="instruction">
+            <h2>comment ça marche ?</h2>
+            <p>Pour répondre à la question, flasher le QRCode correspondant à votre réponse.
+                vous n’avez pas de lecteur QRCode ?
+                Donnez vontre réponse via votre navigateur web préféré en vous rendant ici : URL DE LA QUESTION</p>
+        </div>
+        <p id="mention">Service rendu par Yes-We-Scan.fr</p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+YesWeScan\YesWeScanBundle\Entity\Hotspot:
+    type: entity
+    table: hotspot
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        position:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        nom:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        idsondage:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: idSondage
+        iduser:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: idUser
+    lifecycleCallbacks: {  }

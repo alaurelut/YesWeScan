@@ -1,0 +1,26 @@
+HotspotSondage:
+    type: entity
+    table: hotspot-sondage
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idhotspot:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: idHotspot
+        idsondage:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: idSondage
+    lifecycleCallbacks: {  }

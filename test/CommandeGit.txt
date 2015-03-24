@@ -1,0 +1,21 @@
+﻿git pull origin master => recup fichier
+
+git add . => ajout ensemble doc modif / ajouté
+
+git add nomfichier => juste ajout d'un fichier
+
+git commit -m "commentaire"
+
+git push origin master
+
+
+------
+git status => info branche
+
+git log => log des commit
+
+git checkout nomBranche => changement de la branche active
+
+git checkout -b nomBranche => création d'une nouvelle branche et positionnent sur celle ci
+
+git branch => affiche les branches et la branche courante.

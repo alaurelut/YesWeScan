@@ -1,0 +1,55 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ parent() }} - Etape 3{% endblock %}
+
+{% block body %}
+
+    {#{{ form(form) }}#}
+    <div class="clearer">&nbsp;</div>
+    <div id="Pgrey">
+
+
+    <div id="step3">
+        <div class="full">
+
+            <h2>Étape 3/3 :</h2>
+            <h3>Vos hotspots :</h3>
+            <div id="gauche">
+                <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+                <script type="text/javascript" src="{{ asset('bundles/yeswescan/js/gmap.js') }}"></script>
+                <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+                <div id="canvas"></div>
+
+            </div>
+            <div id="droite">
+                <div id="contentDroite">
+                    {{ form_start(form) }}
+                    <h4>Rechercher sur la carte :</h4>
+                    <div class="create">
+                        <select>
+                            <option selected="selected">Ou sélectionner un lieu</option>
+                            <option>Paris ?</option>
+                        </select>
+                        <div class="createOne">
+                            <strong>OU</strong>
+                            <a id="showName" href=""><div id="createButtonLittle"><p>CRÉEZ LE VOTRE</p></div></a>
+                        </div>
+                        <div id="hotspotName">
+                            {{ form_widget(form.nom, {'attr': {'placeholder': 'Nom du HotSpot', 'style':'margin: 10px 5px;' }})}}
+                            {{ form_widget(form.position) }}
+                        </div>
+                    </div>
+                    <div class="clearer">&nbsp;</div>
+                    {{ form_widget(form.enregistrer, {'label':'VALIDEZ VOTRE SONDAGE', 'attr': {'class':'validateButton'}}) }}
+                    {{ form_end(form) }}
+                    {#<a href=""><div id="validateButton"><p>VALIDEZ VOTRE SONDAGE</p></div></a>#}
+
+                    <div id='info_hotspot'>Pour créer votre Sondage, veuillez nommez votre hotspot puis entrer une adresse sur la carte, vous pouvez déplacer le pointeur pour plus de précision</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

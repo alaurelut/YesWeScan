@@ -1,0 +1,78 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('bundles/yeswescan/css/style.css') }}" />
+{% endblock %}
+{% block title %}{{ parent() }} - Print{% endblock %}
+{% block body %}
+<div id="print">
+<style type="text/css">
+@media print {
+    @page{size: landscape;}
+	header,footer,#printSondage { display: none; }
+}
+</style>
+<input type="button" id="printSondage"
+  onClick="window.print()" 
+  value="Imprimez cette page"/>
+
+{% if sondage != null %}
+<h3>{{sondage.context}}</h3>
+<h1>{{sondage.question}}</h1>
+
+	<div class="block_sondage nbSondage{{nbReponse}}">
+		<a href="{{ path('yes_we_scan_sondage_vote', {idSondage: sondage.id , numReponse:1}) }}"><div>{{sondage.reponse1}}</div>
+	 	<div><img src="{{ qrcode_data_uri("http://" ~ app.request.host ~ path('yes_we_scan_sondage_vote', {idSondage: sondage.id , numReponse:1})) }}" /></div></a>
+	</div>
+
+	<div class="block_sondage nbSondage{{nbReponse}}">
+		<a href="{{ path('yes_we_scan_sondage_vote', {idSondage: sondage.id , numReponse:2}) }}"><div>{{sondage.reponse2}}</div>
+	 	<div><img src="{{ qrcode_data_uri("http://" ~ app.request.host ~ path('yes_we_scan_sondage_vote', {idSondage: sondage.id , numReponse:2})) }}" /></div></a>
+	</div>
+
+
+	{% if sondage.reponse3 != null %}
+
+	<div class="block_sondage nbSondage{{nbReponse}}">
+		<a href="{{ path('yes_we_scan_sondage_vote', {idSondage: sondage.id , numReponse:3}) }}"><div>{{sondage.reponse3}}</div>
+	 	<div><img src="{{ qrcode_data_uri("http://" ~ app.request.host ~ path('yes_we_scan_sondage_vote', {idSondage: sondage.id , numReponse:3})) }}" /></div></a>
+    </div>
+
+	{% endif %}
+	{% if sondage.reponse4 != null %}
+
+	<div class="block_sondage nbSondage{{nbReponse}}">
+		<a href="{{ path('yes_we_scan_sondage_vote', {idSondage: sondage.id , numReponse:4}) }}"><div>{{sondage.reponse4}}</div>
+	 	<div><img src="{{ qrcode_data_uri("http://" ~ app.request.host ~ path('yes_we_scan_sondage_vote', {idSondage: sondage.id , numReponse:4})) }}" /></div></a>
+    </div>
+
+	{% endif %}
+	{% if sondage.reponse5 != null %}
+
+	<div class="block_sondage nbSondage{{nbReponse}}">
+		<a href="{{ path('yes_we_scan_sondage_vote', {idSondage: sondage.id , numReponse:5}) }}"><div>{{sondage.reponse5}}</div>
+	 	<div><img src="{{ qrcode_data_uri("http://" ~ app.request.host ~ path('yes_we_scan_sondage_vote', {idSondage: sondage.id , numReponse:5})) }}" /></div></a>
+    </div>
+
+	{% endif %}
+
+{% else %}
+Sondage non trouvé
+{% endif %}
+
+	<div class='clearer'></div>
+	<div id="ccm">
+		Comment ça marche ?<br> <br>
+
+
+		Pour répondre à la question, flasher le QRCode correspondant à votre réponse. <br>
+		Vous n’avez pas de lecteur QRCode ?<br>
+		Donnez vontre réponse via votre navigateur web préféré en vous rendant ici : {{currentUrl}}<br> <br>
+
+
+		Service rendu par Yes-We-Scan.fr
+	</div>
+
+
+
+</div>
+{% endblock %}

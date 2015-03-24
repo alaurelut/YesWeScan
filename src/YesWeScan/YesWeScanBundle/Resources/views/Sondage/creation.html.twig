@@ -1,0 +1,68 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('bundles/yeswescan/css/styles.css') }}" />
+{% endblock %}
+{% block title %}{{ parent() }} - Etape 1{% endblock %}
+{% block body %}
+<div class="clearer">&nbsp;</div>
+<div id="Pgrey">
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            var reponse = 2;
+            $( "#addQ" ).click(function() {
+                event.preventDefault();
+                $( "#yeswescan_homepage_sondage_register_form_reponse" + reponse ).next().show();
+                reponse+=1;
+                if(reponse == 5){
+                    $("#addQ").hide();
+                }
+            });
+            $("#nextStep").click(function(){
+                event.preventDefault();
+                $( "#step2" ).show();
+                $( "#step1" ).hide();
+            });
+        });
+    </script>
+
+    <div id="step1">
+        <div class="full">
+                <h2>Étape 1/3 :</h2>
+                <h3>Votre question :</h3>
+                {#{{ form(form) }}#}
+                {{ form_start(form) }}
+                {{ form_widget(form.question, {'attr': {'placeholder': 'Saisissez votre question ici', 'cols':95, 'rows':1}})}}
+                {{ form_widget(form.context, {'attr': {'placeholder': 'Saisissez le texte contextuel de votre question ici', 'cols':95, 'rows':5 }})}}
+                <p>{{ form_widget(form.private)}}<label for="yeswescan_homepage_sondage_register_form_private" id="speF"><span class="ui"></span>Privée</label></p>
+                <br>
+                <h3>Vos réponses :</h3>
+
+                {{ form_widget(form.reponse1, {'attr': {'placeholder': 'Saisissez votre première réponse ici', 'cols':95, 'rows':1 }})}}
+                {{ form_widget(form.reponse2, {'attr': {'placeholder': 'Saisissez votre seconde réponse ici', 'cols':95, 'rows':1 }})}}
+                {{ form_widget(form.reponse3, {'attr': {'placeholder': 'Saisissez votre troisième réponse ici', 'cols':95, 'rows':1,'style':'display: none;' }})}}
+                {{ form_widget(form.reponse4, {'attr': {'placeholder': 'Saisissez votre quatrième réponse ici', 'cols':95, 'rows':1,'style':'display: none;' }})}}
+                {{ form_widget(form.reponse5, {'attr': {'placeholder': 'Saisissez votre dernière réponse ici', 'cols':95, 'rows':1,'style':'display: none;' }})}}
+                <a href="" id="addQ">+ Ajouter une réponse (5 max.)</a>
+                <a id="nextStep" class="nextStep" href="">Étape suivante !</a>
+        </div>
+    </div>
+    <div id="step2" style="display: none;">
+        <div class="full">
+            <h2>Étape 2/3 :</h2>
+            <h3>Votre template :</h3>
+
+            {% set counter = 0 %}
+            {% for child in form.idTemplate %}
+                {{ form_widget(child) }}
+                <label for="{{'yeswescan_homepage_sondage_register_form_idTemplate_' ~ counter }}">
+                    <img src="{{ asset('bundles/yeswescan/images/templates/template' ~ counter ~ '.png')}}" alt="" class="templates" /></label>
+                {% set counter = counter + 1 %}
+            {% endfor %}
+
+            {{ form_widget(form.enregistrer, { 'label': 'Étape suivante !', 'attr': { 'class':'nextStep2'} }) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+ </div>
+
+{% endblock %}

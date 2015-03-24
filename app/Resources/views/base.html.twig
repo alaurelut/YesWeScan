@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}YesWeScan{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('bundles/yeswescan/css/style.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/yeswescan/css/jquery.fullPage.css') }}" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <link rel="icon" type="image/x-icon" href="{{ asset('bundles/yeswescan/images/favicon.ico') }}" />
+    </head>
+    <body>
+    <header>
+        <div class="full">
+            <a href="{{ path('yes_we_scan_homepage') }}">
+                <img id="logo" src="{{ asset('bundles/yeswescan/images/LogoHD.png') }}" alt="Yes We Scan" />
+            </a>
+            <div id="menu">
+                <ul>
+                    <a href="">
+                        <li>COMMENT CA MARCHE ?</li>
+                    </a>
+                    <a href="">
+                        <li>SUPPORT</li>
+                    </a>
+                    <a href="">
+                        <li>BLOG</li>
+                    </a>
+                </ul>
+            </div>
+
+
+
+            {% block inscription %}{% endblock %}
+
+        </div>
+
+        
+
+        
+    </header>
+        {% block body %}{% endblock %}
+        <footer>
+            <p>© 2014 Yes We Scan. Tous droits réservés | <a href="">Mentions légales</a></p>
+        </footer>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,9 @@
+yes_we_scan:
+    resource: "@YesWeScanBundle/Resources/config/routing.yml"
+    prefix:   /
+
+EndroidQrCodeBundle:
+    resource:   "@EndroidQrCodeBundle/Controller/"
+    type:       annotation
+    prefix:     /qrcode
+

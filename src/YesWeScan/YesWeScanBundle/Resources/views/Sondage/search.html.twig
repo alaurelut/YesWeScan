@@ -1,0 +1,18 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('bundles/yeswescan/css/styles.css') }}" />
+{% endblock %}
+{% block title %}{{ parent() }} - Vote{% endblock %}
+{% block body %}
+<div id="search_result">
+	<h1>
+		Recherche
+	</h1>
+		<ul>
+
+            {% for sondage in result %}
+                <li><a href="{{ path('yes_we_scan_sondage_print', {idUser: sondage.idUser , idSondage: sondage.id}) }}">{{sondage.question}}</a></li>
+            {% endfor %}
+        </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+YesWeScan\YesWeScanBundle\Entity\UserSondagesuivi:
+    type: entity
+    table: user-sondagesuivi
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        iduser:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: idUser
+        idsondage:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: idSondage
+    lifecycleCallbacks: {  }

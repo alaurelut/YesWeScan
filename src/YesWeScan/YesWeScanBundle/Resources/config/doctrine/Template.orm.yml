@@ -1,0 +1,26 @@
+YesWeScan\YesWeScanBundle\Entity\Template:
+    type: entity
+    table: template
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        iduser:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: idUser
+        nom:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }

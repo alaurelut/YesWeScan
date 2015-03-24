@@ -1,0 +1,32 @@
+Reponse:
+    type: entity
+    table: reponse
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idhotspot:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: idHotspot
+        idquestion:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: idQuestion
+        idreponse:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: idReponse
+    lifecycleCallbacks: {  }

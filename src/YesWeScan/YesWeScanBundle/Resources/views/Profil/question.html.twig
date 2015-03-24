@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+{% block title %}{{ parent() }} - Questions{% endblock %}
+{% block body %}
+<div>
+	<p>
+		Question
+	</p>
+	<a href="{{ path('yes_we_scan_homepage') }}">Home Page </a> |
+	<a href="{{ path('yes_we_scan_profil') }}">Mon Profil </a> |
+	<a href="{{ path('yes_we_scan_profil_sondage') }}">Mes Sondages </a>
+</div>
+{% endblock %}

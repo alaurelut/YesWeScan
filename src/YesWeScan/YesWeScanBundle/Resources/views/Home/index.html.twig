@@ -1,0 +1,244 @@
+{% extends '::base.html.twig' %}
+{% block title %}{{ parent() }} - Accueil{% endblock %}
+
+{% block inscription %}
+
+<script type="text/javascript">
+        $( document ).ready(function() {
+
+        var register_form_opened = false;
+        var connexion_form_opened = false;
+        var header_opened = false;
+
+            $( "#inscription" ).click(function() {
+                event.preventDefault();
+                if( !header_opened )
+                {
+                    $( "header" ).css('height','100px');
+                    header_opened = true;
+
+                    if( !register_form_opened )
+                    {
+                        
+                        $( "#inscription_form" ).show();
+                        $( "#login_form" ).hide();
+                        register_form_opened = true;
+                        
+                    }
+                    
+                }
+                else
+                {
+                    if(connexion_form_opened)
+                    {
+                        $( "#inscription_form" ).show();
+                        $( "#login_form" ).hide();
+                        register_form_opened = true;
+                        connexion_form_opened = false;
+                    }
+                    else
+                    {
+                        $( "header" ).css('height','60px');
+                        $( "#inscription_form" ).hide();
+                        register_form_opened = false;
+                        header_opened = false;
+                    }
+                    
+                }
+
+            });
+
+            $( "#connexion" ).click(function() {
+                event.preventDefault();
+                if( !header_opened )
+                {
+                    $( "header" ).css('height','100px');
+                    header_opened = true;
+
+                    if( !connexion_form_opened )
+                    {
+                        
+                        $( "#login_form" ).show();
+                        $( "#inscription_form" ).hide();
+                        connexion_form_opened = true;
+                        
+                    }
+                    
+                }
+                else
+                {
+                    if(register_form_opened)
+                    {
+                        $( "#login_form" ).show();
+                        $( "#inscription_form" ).hide();
+                        connexion_form_opened = true;
+                        register_form_opened = false;
+                    }
+                    else
+                    {
+                        $( "header" ).css('height','60px');
+                        $( "#login_form" ).hide();
+                        connexion_form_opened = false;
+                        header_opened = false;
+                    }
+
+                }
+                
+            });
+
+            
+
+        });
+</script>
+
+<div id="connect">
+{% if session_id != null %}
+    <a href="{{ path('yes_we_scan_profil', {idUser: session_id}) }}" class="myProfil">
+        <div id="profil">
+            <img src="{{ asset('bundles/yeswescan/images/icon_user.png') }}" alt="" id="icon_user"/>
+            <p>Bonjour, {{user.pseudo}}</p>
+        </div>
+    </a>
+{% else %}
+
+    <a href=""><div id="inscription">
+            <p>INSCRIPTION GRATUITE</p>
+        </div></a>
+        <a href="">
+            <div id="connexion">
+                <p>SE CONNECTER</p>
+            </div>
+        </a>
+{% endif %}
+
+
+    </div>
+
+    
+    <div id="inscription_form" class="full">  
+ 
+        {{ form_start(form) }}
+        
+        {{ form_end(form) }}
+
+    </div>
+
+    <div id="login_form" class="full">  
+ 
+        {{ form_start(formLog) }}
+        
+        {{ form_end(formLog) }}
+
+    </div>
+
+
+
+    
+{% endblock %}
+
+
+{% block body %}
+<div class="shadow"></div>
+<div>
+    <div id="fullpage">
+
+
+        <div class="section active">
+
+
+
+
+            <div id="content">
+                <div id="gauche">
+                    <video id="videoDemo" loop="true" autoplay="true" controls="controls" >
+                        <source src="{{ asset('bundles/yeswescan/images/tuto.webm') }}" type="video/webm" />
+                        Ici la description alternative
+                    </video>
+
+                </div>
+                <div id="droite">
+
+                    
+                    <h2>Votre sondage QR Code
+                        <br />créé en un clic</h2>
+                    <h3>Créez vos sondages en toute simplicité et recevez
+                        <br />votre QR Code personnalisé !</h3>
+                    <a href="{{ path('yes_we_scan_sondage_creation') }}"><div id="createButton"><p>CRÉEZ VOTRE SONDAGE</p></div></a>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="section">
+
+
+            <div id="content2">
+                <div class="full speCenter">
+                    <h2>Derniers sondages :</h2>
+                    <img src="{{ asset('bundles/yeswescan/images/templates.png') }}" alt="" />
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+    <div class="clearer">&nbsp;</div>
+
+    <div id="search">
+        <div class="full">
+            <p>RECHERCHER UN SONDAGE :</p>
+
+                {#{{ form(form_search) }}#}
+                {{ form_start(form_search) }}
+                {{ form_widget(form_search.question, {'attr': {'placeholder': 'Saisissez votre question ici', 'cols':95, 'rows':1}})}}
+                <img src="{{ asset('bundles/yeswescan/images/magnifier13.png') }}" alt="" id="loupe" />
+                {{ form_widget(form_search.Rechercher, { 'label': 'Recherche !' }) }}
+                {{ form_end(form_search) }}
+
+            
+        </div>
+    </div>
+
+
+
+    <div style="display: none;">
+        {{ form(form) }}
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                navigation: true,
+                navigationPosition: 'right'
+            });
+        });
+    </script>
+
+    <script src="{{ asset('bundles/yeswescan/js/jquery.easings.min.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('bundles/yeswescan/js/jquery.slimscroll.min.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('bundles/yeswescan/js/jquery.fullPage.js') }}"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            document.getElementById('videoDemo').play();
+        });
+    </script>
+
+</div>
+{% endblock %}
+

@@ -1,0 +1,102 @@
+YesWeScan\YesWeScanBundle\Entity\Sondage:
+    type: entity
+    table: sondage
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        iduser:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: idUser
+        idtemplate:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: idTemplate
+        question:
+            type: string
+            nullable: false
+            length: 150
+            fixed: false
+            comment: ''
+        reponse1:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        reponse2:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        reponse3:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+        reponse4:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+        reponse5:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+        vote1:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+        vote2:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+        vote3:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+        vote4:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+        vote5:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+        context:
+            type: string
+            nullable: false
+            length: 500
+            fixed: false
+            comment: ''
+        private:
+            type: boolean
+            nullable: true
+            comment: ''
+        date:
+            type: datetime
+            nullable: false
+            comment: ''
+            default: CURRENT_TIMESTAMP
+    lifecycleCallbacks: {  }
